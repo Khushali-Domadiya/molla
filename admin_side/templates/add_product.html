@@ -1,0 +1,75 @@
+{% load static %}
+{% include "admin_header.html" %}
+<main class="content">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Add Product</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="text" name="name" value="{{data.name}}" class="form-control"  placeholder="Enter Product Name">
+                        </div>
+                        <div class="card-body">
+                            <select class="form-select" name="brand_name">
+                                <option value="{{data.brand_name_id}}">Choose Any Brand</option>
+                                {% for i in brnd %}
+                                    <option value="{{i.id}}">{{i.brand_name}}</option>
+                                {% endfor %}  
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <select class="form-select" name="category_name">
+                                <option value="{{data.category_name_id}}">Choose Any Category</option>
+                                {% for i in cat %}
+                                    <option value="{{i.id}}">{{i.category_name}}</option>
+                                {% endfor %}  
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <select class="form-select" name="subcategory_name">
+                                <option value="{{data.subcategory_name_id}}">Choose Any Sub-Category</option>
+                                {% for i in subcat %}
+                                    <option value="{{i.id}}">{{i.subcategory_name}}</option>
+                                {% endfor %}  
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <input type="text" name="description" class="form-control"  placeholder="Enter Description" value="{{data.description}}">
+                        </div>
+                        <div class="card-body">
+                            <input type="text" name="prize" class="form-control"  placeholder="Enter Prize" value="{{data.prize}}">
+                        </div>
+                        <div class="card-body">
+                            <input type="file"  name="image" class="form-control" placeholder="Image" value="{{data.image}}">
+                        </div>
+                        <div class="card-body" style="font-size: 15px;">
+								    <div>
+                                        For Whom : 
+									<label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="for_whom" value="man">
+                                        <span class="form-check-label">Man</span>
+                                    </label>
+									<label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="for_whom" value="woman">
+                                        <span class="form-check-label">Woman</span>
+                                    </label>
+                                    <label class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="for_whom" value="children">
+                                        <span class="form-check-label">Children</span>
+                                    </label>
+									</div>
+								</div>
+							</div>
+                        <div class="card-body">
+                            <input type="submit" class="btn btn-primary" value="Submit" name='save'>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>             
+</main>
+{% include "admin_footer.html" %}

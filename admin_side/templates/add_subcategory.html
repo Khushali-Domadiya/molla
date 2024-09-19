@@ -1,0 +1,36 @@
+{% load static %}
+{% include "admin_header.html" %}
+<main class="content">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Add Sub-Category</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="text" name="subcategory_name" class="form-control" value="{{data.subcategory_name}}" placeholder="Enter Sub-Category Name">
+                        </div>
+                        <div class="card-body">
+                            <select class="form-select" name="category_name">
+                                <option value="{{data.category_name}}">Choose Any Category</option>
+                                {% for i in cat %}
+                                    <option value="{{i.id}}">{{i.category_name}}</option>
+                                {% endfor %}  
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <input type="file" value="{{data.image}}" name="image" class="form-control" placeholder="Image">
+                        </div>
+                        <div class="card-body">
+                            <input type="submit" class="btn btn-primary" value="Submit" name='save'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>             
+</main>
+{% include "admin_footer.html" %}

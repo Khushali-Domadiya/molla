@@ -1,0 +1,31 @@
+{% load static %}
+{% include "admin_header.html" %}
+<main class="content">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Add Slide</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="text" name="name" class="form-control" placeholder="Enter Slide Name" value="{{data.name}}">
+                        </div>
+                        <div class="card-body">
+                            <input type="text"  name="discription" class="form-control" placeholder="Enter Description" value="{{data.discription}}">
+                        </div>
+                        <div class="card-body">
+                            <input type="file" name="image" class="form-control" placeholder="Image" value="{{data.image}}">
+                        </div>
+                        <div class="card-body">
+                            <input type="submit" class="btn btn-primary" value="Submit" name='save'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>             
+</main>
+{% include "admin_footer.html" %}
